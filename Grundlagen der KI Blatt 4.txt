@@ -1,0 +1,91 @@
+Grundlagen der KI Blatt 4:
+
+Aufgabe 1:
+
+Handsimulation:
+
+Wenn man die angegebene Tabelle, also die in der Aufgabensstellung benutzt für die Handsimulation, dann wäre:
+
+CAL3-BAUM (S1 = 4, S2, 0,7):
+
+Einkommen?
+- hoch -> O
+-niedrig -> 
+	Alter?
+		- >= 35 - M
+		- < 35 ->
+			Bildung ?
+				- Master -> 0
+				- Anitur -> M
+
+
+Als erstes wird das Attribut Einkommen berücksichtigt, weil es die Daten am besten trennt. Darauf wird in der Ebene niedrig Alter und Bildung betrachtet um eine ausreichende Reinheit von >= 70% zu erreichen.
+
+
+ID3-Baum:
+
+Einkommen?
+- hoch -> 0
+- niedrig ->
+	Bildung ?
+		- Master -> 0
+		- Abitur -> M
+
+ID3 nutzt den Informationsgewinn. Einkommen liefert den größten gewinn und wird als erstes gewählt. Danach kommt Bildung und trennt die restlichen Beispiele.
+
+
+Fazit:
+Beide Verfahren kommen zu ähnlichen Ergebnissen:
+Wähler mit hohem einkommen - > o
+nidriges einkommen -> oft M, nur mit master o
+
+
+Aufgabe 2:
+
+Der Baum der gegeben ist, ist: x3(x2(x1(C,A),x1(B,A)), x1(x2(C,B),A))
+Wenn man ihn vereinfachen will dannw rüde ich:
+
+1. Transformationsregel
+
+Aus x3(x2(x1(C,A),x1(B,A)), x1(x2(C,B),A))
+folgt: x3(x1(x2(C,B),A), x1(x2(C,B), A))
+
+2. Pruning Regel:
+
+Aus: x3(x1(x2(C,B),A), x1(x2(C,B), A))
+folgt: x1(x2(C,B),A)
+
+Endergebnis: x1(x2(C,B),A)
+
+
+Aufgabe 3:
+
+
+1.
+
+Für zoo.csv und Restaurant.csv mit J48 habe ich den Entscheidungsbaum-Lehrer ausgewählt. Daruaf habe ich mit der Option Use Training set gestartet.
+
+Zoo-Datensatz:
+Der Baum trennt die Tiere größtenteils nach milk, feathers und legs. Die Fehlerrate war bei 0%, da alle 101 Tiere korrekt zu geteilt wurden.
+
+Restaurant-Datensatz:
+Deer Baum nutzt häufig Patrons, und Price, mit einer fehelrrate bei ca. 5%. Es hab nur sehr wenige Fälle die flasch zugeordnert wurden.
+
+Also: J48 Alghorithmus macht realtiv stabile und lesbare Entscheidungsbäume.
+
+2.
+
+Nominal: feste Kategorien, darunter: {JA, NEIN} oder {ROT, BLAU, GRÜN}
+Ordinal/Numeric: numerische oder geordnete Werte z.B 0-100 oder klein < mittel < groß
+String: beliebiger Text ohne feste Kategorie
+
+Wenn man die CSV Dateien in ARFF konventiert, dann werden daraus .arff Dateien, welche Attributtypen im Header und daten in normaler form haben.
+
+3.
+
+Also Zoo.arff hatte mit J48 und ID3 jeweils die Fehlerrate 0% und 10% (ungefähr). 
+Restaurant.arff hatte 5% und 15%. J48 arbeitet mir Pruning was deutlich kompakter ist und robuster gegen Anpassungen. ID3  hat deutlich größere Bäume, weil er kein Pruning benutzt und hatte auch höhere Fehelerraten. Die CSV und arff Dateien haben identische Ergebnisse abgeliefert.
+
+
+
+
